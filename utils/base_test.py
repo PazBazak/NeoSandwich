@@ -1,20 +1,14 @@
 import pytest
 from boa3_test.tests.boa_test import BoaTest
 from boa3_test.tests.test_classes.testengine import TestEngine
-from .consts import NEO_CONTRACTS_DIR_PATH
 
 
 class BaseTest(BoaTest):
     """
     Base Test for testing smart contracts
     """
-
+    contract_path = r'C:\\Projects\\NeoAutomation\\NeoContracts\\wrapped_gas.py'
     OWNER_SCRIPT_HASH = bytes(20)
-
-    @pytest.fixture(scope='class', autouse=True)
-    def setup_class(self, contract):
-        cls = type(self)
-        cls.contract_path = self.get_contract_path(NEO_CONTRACTS_DIR_PATH, contract)
 
     @pytest.fixture(autouse=True)
     def setup(self):

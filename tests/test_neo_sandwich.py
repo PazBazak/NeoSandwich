@@ -15,10 +15,12 @@ TOTAL_SUPPLY = 10_000_000 * DECIMALS_MULTIPLIER
 
 
 # todo - add docs
+# todo - fix boa dll test engine missing.
 
-class TestWrappedGas(BaseTest):
+
+class TestNeoSandwich(BaseTest):
     """
-    Testing suite for wrapped_gas.py contract.
+    Testing suite for neo_sandwich.py contract.
     """
 
     OTHER_ACCOUNT_1 = bytes(range(20))

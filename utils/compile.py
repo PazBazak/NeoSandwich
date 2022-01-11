@@ -1,9 +1,14 @@
 from boa3.boa3 import Boa3
 
-CONTRACT_PATH = '../NeoContracts/wrapped_gas.py'
+CONTRACT_PATH = '../contract/neo_sandwich.py'
+
 
 # todo - use click to create CLI
 
 
-if __name__ == '__main__':
+def compile_contract():
     Boa3.compile_and_save(CONTRACT_PATH)
+
+
+if __name__ == '__main__':
+    compile_contract()
