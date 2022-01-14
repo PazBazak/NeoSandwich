@@ -1,18 +1,17 @@
 import pytest
 from boa3_test.tests.boa_test import BoaTest
-from boa3_test.tests.test_classes.testengine import TestEngine
 
 
 class BaseTest(BoaTest):
     """
     Base Test for testing smart contracts
     """
-    contract_path = r'C:\\Projects\\NeoAutomation\\NeoContracts\\wrapped_gas.py'
+    contract_path = None
     OWNER_SCRIPT_HASH = bytes(20)
 
     @pytest.fixture(autouse=True)
-    def setup(self):
-        self.engine = TestEngine()
+    def setup(self, engine):
+        self.engine = engine
 
     def deploy(self, signer=OWNER_SCRIPT_HASH):
         """
