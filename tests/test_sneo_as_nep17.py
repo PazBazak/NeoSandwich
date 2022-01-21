@@ -54,10 +54,29 @@ class TestSandwichAsNEP17(BaseTest):
         with self.assertRaises(TestExecutionException):
             self.call_method("balanceOf", bytes(21))
 
+        self.call_method("balanceOf", bytes(20))
+
     def test_validate_transfer_input(self):
         """
-        todo
+        Verify transfer method validates sender & receiver addresses.
+        Also verifies that amount is not negative.
         """
+        with self.assertRaises(TestExecutionException):
+            self.call_method("transfer", bytes(19), self.OTHER_ACCOUNT_1, 0, "")
+
+        with self.assertRaises(TestExecutionException):
+            self.call_method("transfer", bytes(21), self.OTHER_ACCOUNT_1, 0, "")
+
+        with self.assertRaises(TestExecutionException):
+            self.call_method("transfer", self.OTHER_ACCOUNT_1, bytes(19), 0, "")
+
+        with self.assertRaises(TestExecutionException):
+            self.call_method("transfer", self.OTHER_ACCOUNT_1, bytes(21), 0, "")
+
+        with self.assertRaises(TestExecutionException):
+            self.call_method("transfer", self.OTHER_ACCOUNT_1, self.OWNER_SCRIPT_HASH, -1, "")
+
+        self.call_method("transfer", self.OTHER_ACCOUNT_1, self.OWNER_SCRIPT_HASH, 0, "")
 
     def test_cannot_deploy_by_other_account(self):
         """

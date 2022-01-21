@@ -274,6 +274,7 @@ def claim_gas():
     call_contract(bNEO, "transfer", [executing_script_hash, bNEO_ADDRESS, 0, None])
 
 
+# todo - convert_gas cannot be compiled
 # @public
 # def convert_gas(amount: int):
 #     """
